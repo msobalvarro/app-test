@@ -5,46 +5,42 @@ import store from '../store'
 const ListResults = () => {
     // state
     const [results, setResults] = useState(store.getState().results)
-    const [indexActive, setIndexActive] = useState(null)
-
 
     useEffect(() => {
         store.subscribe(() => {
             // get new results
             const newResults = store.getState().results
 
-            // console.log()
-
             // verify diferences
             if (results !== newResults) {
                 setResults(newResults)
-
-                setIndexActive(null)
             }
         }, [])
     }, [])
 
-
     return (
-        <div className='list-group mt-4'>
+        <ul className='list-group mt-4'>
             {
                 results?.map((result, index) => (
-                    <a
-                        href='#'
+                    <li
                         key={result.id}
-                        className={`list-group-item list-group-item-action ${indexActive === index}`}
-                        onClick={_ => {
-                            store.dispatch({ type: "dataSelected", payload: result })
+                        className="list-group-item list-group-item-action cursor-pointer"
+                        onClick={_ => store.dispatch({ type: "dataSelected", payload: result })}>
+                        {/* <b className='ml-3'>{result?.login}</b> */}
 
-                            setIndexActive(index)
-                        }}>
-                        <img src={result.avatar_url} className='avatar rounded' />
+                        <div className='row'>
+                            <div className='col-1'>
+                                <img src={result.avatar_url} className='avatar rounded mr-2' />
+                            </div>
+                            <div className='col-11'>
+                                {result?.login}
+                            </div>
+                        </div>
 
-                        <span className='ml-2'>{result.login}</span>
-                    </a>
+                    </li>
                 ))
             }
-        </div>
+        </ul>
     )
 }
 

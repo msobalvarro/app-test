@@ -24,14 +24,15 @@ const PreviewComponent = ({ }) => {
       const userSelected = store.getState().dataSelected
 
 
-      getAllData(userSelected.login)
+      if (userSelected) {
+        getAllData(userSelected.login)
+      }
     }, [])
   }, [])
 
   if (user !== null) {
     return (
       <div className=''>
-        {/* <h1>{user.login}</h1> */}
         <div className='row'>
           <div className='col-4'>
             <img src={user.avatar_url} className='big-avatar' />
@@ -54,7 +55,7 @@ const PreviewComponent = ({ }) => {
 
                 <p className='card-text'>{repository?.description}</p>
 
-                <a href={repository?.html_url} className='btn btn-primary'>Go to</a>
+                <a href={repository?.html_url} target='_blank' className='btn btn-primary'>Go to</a>
               </div>
             </div>
           ))

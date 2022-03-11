@@ -10,3 +10,7 @@
   height: auto;
   border-radius: 50%;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

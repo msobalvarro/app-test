@@ -43,7 +43,8 @@ const FilterComponent = () => {
       setErrorFound(data.total_count === 0)
 
     } catch (error) {
-      alert(error)
+      // alert(error)
+      console.log(error)
     } finally {
       setLoading(false)
     }
