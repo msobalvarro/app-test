@@ -21,7 +21,7 @@ const App = () => {
     <div className='container bg-light border mt-5 p-5 rounded'>
       <h2>Buscar usuario GitHub</h2>
 
-      <div className='row align-items-center mt-4'>
+      <div className='row align-item-center mt-4 d-flex aling-items-top'>
         <div className='col-4'>
           <FilterComponent />
         </div>
